@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tony Li — Frontend Engineer</title>
+<meta name="description" content="Tony Li is a frontend engineer at Coinbase working on stablecoins and rewards.">
+<meta property="og:title" content="Tony Li — Frontend Engineer">
+<meta property="og:description" content="Frontend engineer at Coinbase building stablecoin infrastructure and rewards products. TypeScript, React, GraphQL.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://litony.dev/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230047E0'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='32' font-weight='700' fill='white' text-anchor='middle'%3ETL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #101420;
+    --paper: #FCFCFA;
+    --accent: #0047E0;
+    --muted: #6B7280;
+    --line: #E7E7E2;
+    --hover: #F4F4F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  a { color: var(--ink); text-decoration-color: var(--line); text-underline-offset: 3px; transition: text-decoration-color 0.15s ease, color 0.15s ease; }
+  a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Intro ---------- */
+  header { padding: 96px 0 20px; }
+  .top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .top nav { display: flex; gap: 18px; font-size: 14px; }
+  .top nav a { text-decoration: none; color: var(--muted); }
+  .top nav a:hover { color: var(--accent); }
+  .intro {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(24px, 4vw, 31px);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+  }
+  .intro em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .intro-sub {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 16.5px;
+    max-width: 56ch;
+  }
+
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 26px;
+    padding: 10px 18px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .resume-btn:hover { background: #0038B0; color: #fff; transform: translateY(-1px); }
+  .resume-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* staggered load */
+  .rise { opacity: 0; transform: translateY(10px); animation: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+  .rise.d1 { animation-delay: 0.02s; }
+  .rise.d2 { animation-delay: 0.1s; }
+  .rise.d3 { animation-delay: 0.18s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* ---------- Sections ---------- */
+  section { padding-top: 64px; }
+  .sec-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* ---------- Expandable work rows ---------- */
+  .roles { border-top: 1px solid var(--line); }
+  .role { border-bottom: 1px solid var(--line); }
+
+  .role-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 8px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .role-toggle:hover { background: var(--hover); }
+  .role-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  .role-co {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+  }
+  .role-id { display: inline-flex; align-items: center; gap: 12px; }
+  .role-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 1px solid var(--line);
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .role-logo img { width: 18px; height: 18px; object-fit: contain; }
+  .role-logo.mono-mark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent);
+    background: #EEF3FF;
+    border-color: #DCE6FF;
+  }
+  .role-title { color: var(--muted); font-size: 14.5px; }
+  .role-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .role-chevron {
+    color: var(--muted);
+    font-size: 13px;
+    transition: transform 0.25s ease;
+    line-height: 1;
+    align-self: center;
+  }
+  .role[data-open="true"] .role-chevron { transform: rotate(180deg); }
+  .role[data-open="true"] .role-co { color: var(--accent); }
+
+  .role-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .role[data-open="true"] .role-body { grid-template-rows: 1fr; }
+  .role-body-inner { overflow: hidden; }
+  .role-detail {
+    padding: 4px 8px 26px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .role-detail p { margin-bottom: 12px; max-width: 60ch; }
+  .role-detail p:last-child { margin-bottom: 0; }
+  .role-detail strong { color: var(--ink); font-weight: 600; }
+  .role-project {
+    margin-bottom: 18px;
+  }
+  .role-project:last-child { margin-bottom: 0; }
+  .role-project h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .role-tech {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  /* ---------- Projects ---------- */
+  .proj {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 22px;
+    transition: border-color 0.15s ease;
+  }
+  .proj:hover { border-color: var(--accent); }
+  .proj h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16.5px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .proj p { color: var(--muted); font-size: 15px; max-width: 60ch; }
+
+  /* ---------- Education ---------- */
+  .edu { border-top: 1px solid var(--line); }
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 15px 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .edu-school {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15.5px;
+  }
+  .edu-deg { color: var(--muted); font-size: 14.5px; }
+  .edu-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills { display: grid; gap: 12px; }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 12px;
+    font-size: 14.5px;
+    align-items: baseline;
+  }
+  .skill-k {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- Now / skills / contact prose ---------- */
+  .prose { color: var(--muted); font-size: 15.5px; max-width: 60ch; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose p { margin-bottom: 12px; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  footer { padding: 80px 0 60px; }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    font-size: 15px;
+  }
+  .copyright {
+    margin-top: 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rise { opacity: 1; transform: none; animation: none; }
+    .role-body, .role-chevron { transition: none; }
+  }
+
+  @media (max-width: 560px) {
+    header { padding-top: 56px; }
+    .role-toggle { grid-template-columns: 1fr auto; }
+    .role-title { display: block; margin-left: 40px; margin-top: 2px; }
+    .role-id { display: flex; }
+    .skill-row { grid-template-columns: 1fr; gap: 3px; }
+    .edu-row { flex-wrap: wrap; }
+  }
+
+  /* ---------- Dark mode ---------- */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #E9EBF1;
+      --paper: #0D1117;
+      --accent: #7AA2FF;
+      --muted: #98A1B3;
+      --line: #222834;
+      --hover: #161C25;
+    }
+    ::selection { background: var(--accent); color: #0D1117; }
+    .role-logo { background: #fff; border-color: #2B323E; }
+    .role-logo.mono-mark { background: #1B2536; border-color: #2A3A5C; }
+    .resume-btn { color: #0D1117; }
+    .resume-btn:hover { background: #93B4FF; color: #0D1117; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="top rise d1">
+      <div class="name">Tony Li</div>
+      <nav aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="intro rise d2">
+      I'm a frontend engineer at <em>Coinbase</em>, currently building the platform
+      that lets companies launch and manage their own stablecoins.
+    </p>
+    <p class="intro-sub rise d3">
+      Based in Vancouver, working on the stablecoin team. Before this I shipped rewards
+      products used by tens of thousands of people. I like owning things end to end —
+      design docs through rollout — and lately I've been deep in AI-assisted development.
+    </p>
+    <a class="resume-btn rise d3" href="Jake_s_Resume.pdf" download="Tony_Li_Resume.pdf">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+      Download resume
+    </a>
+  </header>
+
+  <section id="work">
+    <div class="sec-label">Work — click a role for details</div>
+    <div class="roles">
+
+      <div class="role" data-open="true">
+        <button class="role-toggle" aria-expanded="true" aria-controls="detail-coinbase">
+          <span class="role-id">
+            <span class="role-logo"><img src="logos/coinbase.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='C';"></span>
+            <span class="role-co">Coinbase</span>
+            <span class="role-title"> · Software Engineer, Stablecoins</span>
+          </span>
+          <span class="role-date">2024 — now</span>
+          <span class="role-chevron">▾</span>
+        </button>
+        <div class="role-body" id="detail-coinbase">
+          <div class="role-body-inner">
+            <div class="role-detail">
+              <div class="role-project">
+                <h4>Custom Stablecoins</h4>
+                <p>Lead frontend engineer on the <a href="https://www.coinbase.com/en-ca/developer-platform/products/stablecoin-as-a-service" target="_blank" rel="noopener">Stablecoin-as-a-Service platform</a> that lets enterprise partners — including <strong>Deel, Ramp, Citi, and ADP</strong> — issue and manage their own stablecoins, live on the <a href="https://www.coinbase.com/en-ca/developer-platform" target="_blank" rel="noopener">Coinbase Developer Platform</a>. I built the onboarding flows, supply management, rewards, and an analytics dashboard on live on-chain data.</p>
+              </div>
+              <div class="role-project">
+                <h4>Hold Cash, Earn BTC</h4>
+                <p>Frontend lead for Coinbase's first multi-asset rewards product (<a href="https://help.coinbase.com/en/coinbase/usdc-rewards/hold-cash-earn-bitcoin" target="_blank" rel="noopener">hold USDC, earn Bitcoin</a>). It grew <strong>85x to ~$300M enrolled</strong> across <strong>41K+ users</strong>, with <strong>$555K+ in BTC rewards paid out</strong> and counting. I also crossed into backend here, automating the BTC payout funding that used to be a manual biweekly treasury process.</p>
+              </div>
+              <div class="role-project">
+                <h4>One source of truth for USDC rates</h4>
+                <p>Reward rates were drifting apart across surfaces, so I built a central resolver that every web surface across <a href="https://www.coinbase.com/" target="_blank" rel="noopener">coinbase.com</a> now uses, plus automated UI tests that keep catching anomalies long after launch.</p>
+              </div>
+              <p>Across all of it I own projects end to end — design docs through rollout and monitoring — co-led launch alignment across <strong>4 partner teams</strong>, and wrote an onboarding guide the whole team now uses.</p>
+              <div class="role-tech">TypeScript · React · GraphQL · Node.js</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role" data-open="false">
+        <button class="role-toggle" aria-expanded="false" aria-controls="detail-fortinet">
+          <span class="role-id">
+            <span class="role-logo"><img src="logos/fortinet.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='F';"></span>
+            <span class="role-co">Fortinet</span>
+            <span class="role-title"> · Software Developer</span>
+          </span>
+          <span class="role-date">2023</span>
+          <span class="role-chevron">▾</span>
+        </button>
+        <div class="role-body" id="detail-fortinet">
+          <div class="role-body-inner">
+            <div class="role-detail">
+              <p>Built a full UI for the packet-capture system so users no longer needed an external tool, improving user efficiency ~35%. Optimized rendering to cut load times ~30% and worked through 40+ customer-reported issues along the way.</p>
+              <div class="role-tech">React · TypeScript · Tailwind CSS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role" data-open="false">
+        <button class="role-toggle" aria-expanded="false" aria-controls="detail-ibm">
+          <span class="role-id">
+            <span class="role-logo"><img src="logos/ibm.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='I';"></span>
+            <span class="role-co">IBM</span>
+            <span class="role-title"> · Software Engineer</span>
+          </span>
+          <span class="role-date">2022</span>
+          <span class="role-chevron">▾</span>
+        </button>
+        <div class="role-body" id="detail-ibm">
+          <div class="role-body-inner">
+            <div class="role-detail">
+              <p>Designed reusable components on IBM's Carbon design system, improving consistency across the app and component load speed by ~20%.</p>
+              <div class="role-tech">React · TypeScript · Carbon UI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role" data-open="false">
+        <button class="role-toggle" aria-expanded="false" aria-controls="detail-rbc">
+          <span class="role-id">
+            <span class="role-logo"><img src="logos/rbc.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='R';"></span>
+            <span class="role-co">Royal Bank of Canada</span>
+            <span class="role-title"> · Software Engineer</span>
+          </span>
+          <span class="role-date">2021 — 22</span>
+          <span class="role-chevron">▾</span>
+        </button>
+        <div class="role-body" id="detail-rbc">
+          <div class="role-body-inner">
+            <div class="role-detail">
+              <p>Solely built an internal web app that streamlined my team's workflow, lifting operational efficiency ~35% and team productivity ~50%.</p>
+              <div class="role-tech">Python · Flask · SQL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role" data-open="false">
+        <button class="role-toggle" aria-expanded="false" aria-controls="detail-seedwell">
+          <span class="role-id">
+            <span class="role-logo"><img src="logos/seedwell.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='S';"></span>
+            <span class="role-co">Seedwell</span>
+            <span class="role-title"> · Software Engineer</span>
+          </span>
+          <span class="role-date">2021</span>
+          <span class="role-chevron">▾</span>
+        </button>
+        <div class="role-body" id="detail-seedwell">
+          <div class="role-body-inner">
+            <div class="role-detail">
+              <p>Delivered 20+ user stories for an AI fintech product tackling employee financial stress.</p>
+              <div class="role-tech">React · TypeScript · GraphQL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-label">Projects</div>
+    <div class="proj">
+      <h3>WhatDo</h3>
+      <p>AI-powered mobile app that curates personalized local activity recommendations. I integrated and tuned GPT for reliable structured output, with Firebase handling real-time data and auth.</p>
+      <div class="role-tech">React Native · TypeScript · OpenAI · Firebase</div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-label">Education</div>
+    <div class="edu">
+      <div class="edu-row">
+        <div>
+          <div class="edu-school">Georgia Institute of Technology</div>
+          <div class="edu-deg">Graduate coursework, MS in Computer Science (Machine Learning)</div>
+        </div>
+        <span class="edu-date">on pause</span>
+      </div>
+      <div class="edu-row">
+        <div>
+          <div class="edu-school">Carleton University</div>
+          <div class="edu-deg">BCS, Computer Science — 3.8/4 GPA</div>
+        </div>
+        <span class="edu-date">2023</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-label">Toolbox</div>
+    <div class="skills">
+      <div class="skill-row"><span class="skill-k">Languages</span><span>TypeScript, JavaScript, Python, SQL</span></div>
+      <div class="skill-row"><span class="skill-k">Frameworks</span><span>React, React Native, Next.js, Node.js, GraphQL</span></div>
+      <div class="skill-row"><span class="skill-k">AI &amp; LLM</span><span>OpenAI API, LLM integration, prompt engineering, agentic workflows (Claude Code, Cursor)</span></div>
+      <div class="skill-row"><span class="skill-k">Other</span><span>REST APIs, Firebase, MongoDB, Git</span></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-label">Beyond the editor</div>
+    <div class="prose">
+      <p>I use AI heavily in my workflow — agentic coding tools, LLM integrations, automating the boring parts — and I think it's changed how frontend work gets done. Off the clock: running, the gym, golf, and an unreasonable amount of card games.</p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="sec-label">Say hi</div>
+    <div class="footer-links">
+      <a href="mailto:litony1999c@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/tony-li-2b9745165/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://litony.dev/" target="_blank" rel="noopener">litony.dev</a>
+      <a href="Jake_s_Resume.pdf" download="Tony_Li_Resume.pdf">Resume ↓</a>
+    </div>
+    <div class="copyright">© 2026 Tony Li</div>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.role-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const role = btn.closest('.role');
+      const open = role.getAttribute('data-open') === 'true';
+      role.setAttribute('data-open', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+  });
+</script>
+
+</body>
+</html>
