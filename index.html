@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tony Li — Frontend Engineer</title>
-<meta name="description" content="Tony Li is a frontend engineer at Coinbase working on stablecoins and rewards.">
-<meta property="og:title" content="Tony Li — Frontend Engineer">
-<meta property="og:description" content="Frontend engineer at Coinbase building stablecoin infrastructure and rewards products. TypeScript, React, GraphQL.">
+<title>Tony Li — Software Engineer</title>
+<meta name="description" content="Tony Li is a software engineer at Coinbase transforming the future of finance through stablecoins.">
+<meta property="og:title" content="Tony Li — Software Engineer">
+<meta property="og:description" content="Software engineer at Coinbase transforming the future of finance through stablecoins. TypeScript, React, GraphQL.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://litony.dev/">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  .role[data-open="true"] .role-body { grid-template-rows: 1fr; }
+  .role[data-open="true"] .role-body, .proj[data-open="true"] .role-body { grid-template-rows: 1fr; }
   .role-body-inner { overflow: hidden; }
   .role-detail {
     padding: 4px 8px 26px;
@@ -202,6 +202,27 @@
     font-size: 15px;
   }
   .role-detail p { margin-bottom: 12px; max-width: 60ch; }
+  .role-detail a {
+    display: inline;
+    background: #EEF3FF;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid #DCE6FF;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .role-detail a::after {
+    content: " \2197";
+    font-size: 0.8em;
+  }
+  .role-detail a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
   .role-detail p:last-child { margin-bottom: 0; }
   .role-detail strong { color: var(--ink); font-weight: 600; }
   .role-project {
@@ -230,14 +251,20 @@
     transition: border-color 0.15s ease;
   }
   .proj:hover { border-color: var(--accent); }
-  .proj h3 {
+  .proj-toggle { padding: 0; grid-template-columns: 1fr auto; border-radius: 0; }
+  .proj-toggle:hover { background: none; }
+  .proj-name {
+    display: block;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 16.5px;
     font-weight: 600;
     letter-spacing: -0.01em;
     margin-bottom: 6px;
   }
-  .proj p { color: var(--muted); font-size: 15px; max-width: 60ch; }
+  .proj-desc { display: block; color: var(--muted); font-size: 15px; max-width: 60ch; }
+  .proj[data-open="true"] .role-chevron { transform: rotate(180deg); }
+  .proj[data-open="true"] .proj-name { color: var(--accent); }
+  .proj .role-detail { padding: 12px 0 0; }
 
   /* ---------- Education ---------- */
   .edu { border-top: 1px solid var(--line); }
@@ -325,6 +352,8 @@
     ::selection { background: var(--accent); color: #0D1117; }
     .role-logo { background: #fff; border-color: #2B323E; }
     .role-logo.mono-mark { background: #1B2536; border-color: #2A3A5C; }
+    .role-detail a { background: #1B2536; border-color: #2A3A5C; }
+    .role-detail a:hover { background: var(--accent); border-color: var(--accent); color: #0D1117; }
     .resume-btn { color: #0D1117; }
     .resume-btn:hover { background: #93B4FF; color: #0D1117; }
   }
@@ -345,13 +374,14 @@
       </nav>
     </div>
     <p class="intro rise d2">
-      I'm a frontend engineer at <em>Coinbase</em>, currently building the platform
-      that lets companies launch and manage their own stablecoins.
+      I'm a software engineer at <em>Coinbase</em>, transforming the future
+      of finance through stablecoins.
     </p>
     <p class="intro-sub rise d3">
-      Based in Vancouver, working on the stablecoin team. Before this I shipped rewards
-      products used by tens of thousands of people. I like owning things end to end —
-      design docs through rollout — and lately I've been deep in AI-assisted development.
+      Right now I'm building the platform that enables enterprises and businesses to
+      issue their own custom stablecoins. I've shipped rewards products used by hundreds
+      of thousands of people, and I like owning things end to end — design docs through
+      rollout. Lately I've been deep in AI-assisted development.
     </p>
     <a class="resume-btn rise d3" href="Jake_s_Resume.pdf" download="Tony_Li_Resume.pdf">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
@@ -378,7 +408,7 @@
             <div class="role-detail">
               <div class="role-project">
                 <h4>Custom Stablecoins</h4>
-                <p>Lead frontend engineer on the <a href="https://www.coinbase.com/en-ca/developer-platform/products/stablecoin-as-a-service" target="_blank" rel="noopener">Stablecoin-as-a-Service platform</a> that lets enterprise partners — including <strong>Deel, Ramp, Citi, and ADP</strong> — issue and manage their own stablecoins, live on the <a href="https://www.coinbase.com/en-ca/developer-platform" target="_blank" rel="noopener">Coinbase Developer Platform</a>. I built the onboarding flows, supply management, rewards, and an analytics dashboard on live on-chain data.</p>
+                <p>Lead frontend engineer on the <a href="https://www.coinbase.com/en-ca/developer-platform/products/stablecoin-as-a-service" target="_blank" rel="noopener">Stablecoin-as-a-Service platform</a> that lets enterprise partners issue and manage their own stablecoins, live on the <a href="https://www.coinbase.com/en-ca/developer-platform" target="_blank" rel="noopener">Coinbase Developer Platform</a>. I built the onboarding flows, supply management, rewards, and an analytics dashboard on live on-chain data.</p>
               </div>
               <div class="role-project">
                 <h4>Hold Cash, Earn BTC</h4>
@@ -408,7 +438,15 @@
         <div class="role-body" id="detail-fortinet">
           <div class="role-body-inner">
             <div class="role-detail">
-              <p>Built a full UI for the packet-capture system so users no longer needed an external tool, improving user efficiency ~35%. Optimized rendering to cut load times ~30% and worked through 40+ customer-reported issues along the way.</p>
+              <div class="role-project">
+                <h4>Packet-capture UI</h4>
+                <p>Fortinet's security appliances can capture live network traffic, but inspecting it used to mean exporting files to an external analyzer. I built a fully-featured capture UI directly into the product, closing that gap and improving user efficiency ~35%.</p>
+              </div>
+              <div class="role-project">
+                <h4>Performance &amp; reuse</h4>
+                <p>Engineered 6 reusable components and optimized rendering logic — load times dropped ~30% and the team's development time ~20%.</p>
+              </div>
+              <p>Along the way I resolved <strong>40+ customer-reported issues</strong>, which lifted user satisfaction ~15% and taught me a lot about debugging other people's networks from a stack trace and a hunch.</p>
               <div class="role-tech">React · TypeScript · Tailwind CSS</div>
             </div>
           </div>
@@ -428,8 +466,9 @@
         <div class="role-body" id="detail-ibm">
           <div class="role-body-inner">
             <div class="role-detail">
-              <p>Designed reusable components on IBM's Carbon design system, improving consistency across the app and component load speed by ~20%.</p>
-              <div class="role-tech">React · TypeScript · Carbon UI</div>
+              <p>Worked inside <strong>Carbon</strong>, IBM's open-source design system — the kind of environment where accessibility, theming, and API consistency are requirements, not nice-to-haves. I designed <strong>6 reusable components</strong> that improved consistency across the application and cut component load speed ~20%.</p>
+              <p>Building at IBM's scale early in my career shaped how I think about components: design them for the next ten teams that will use them, not just the screen in front of you.</p>
+              <div class="role-tech">React · TypeScript · SCSS · Carbon UI</div>
             </div>
           </div>
         </div>
@@ -448,8 +487,9 @@
         <div class="role-body" id="detail-rbc">
           <div class="role-body-inner">
             <div class="role-detail">
-              <p>Solely built an internal web app that streamlined my team's workflow, lifting operational efficiency ~35% and team productivity ~50%.</p>
-              <div class="role-tech">Python · Flask · SQL</div>
+              <p>My first taste of end-to-end ownership: I <strong>solely built</strong> an internal web app that streamlined my team's workflow — Flask backend, SQL data layer, Jenkins for CI — lifting operational efficiency ~35% and team productivity ~50%.</p>
+              <p>Being the only engineer on it meant every decision was mine to make and mine to live with, which is where I first learned to write design docs before code.</p>
+              <div class="role-tech">Python · Flask · Jenkins · SQL</div>
             </div>
           </div>
         </div>
@@ -468,7 +508,8 @@
         <div class="role-body" id="detail-seedwell">
           <div class="role-body-inner">
             <div class="role-detail">
-              <p>Delivered 20+ user stories for an AI fintech product tackling employee financial stress.</p>
+              <p>My first industry role, at an early-stage AI fintech tackling employee financial stress. I delivered <strong>20+ user stories</strong> across the React + TypeScript front end and its GraphQL API, at the pace only a startup demands.</p>
+              <p>Startup breadth over big-company depth: I touched everything from UI polish to API shape, and got my first look at shipping AI-driven product features — a thread that's run through my work ever since.</p>
               <div class="role-tech">React · TypeScript · GraphQL</div>
             </div>
           </div>
@@ -479,10 +520,22 @@
   </section>
 
   <section id="projects">
-    <div class="sec-label">Projects</div>
-    <div class="proj">
-      <h3>WhatDo</h3>
-      <p>AI-powered mobile app that curates personalized local activity recommendations. I integrated and tuned GPT for reliable structured output, with Firebase handling real-time data and auth.</p>
+    <div class="sec-label">Projects — click for details</div>
+    <div class="proj" data-open="false">
+      <button class="role-toggle proj-toggle" aria-expanded="false" aria-controls="detail-whatdo">
+        <span>
+          <span class="proj-name">WhatDo</span>
+          <span class="proj-desc">AI-powered mobile app that curates personalized local activity recommendations. I integrated and tuned GPT for reliable structured output, with Firebase handling real-time data and auth.</span>
+        </span>
+        <span class="role-chevron">▾</span>
+      </button>
+      <div class="role-body" id="detail-whatdo">
+        <div class="role-body-inner">
+          <div class="role-detail">
+            <p>Never got the chance to publish it — but the build was the payoff: hands-on experience hooking real-world APIs into a mobile app and working out token-optimization strategies to keep LLM calls fast and cheap.</p>
+          </div>
+        </div>
+      </div>
       <div class="role-tech">React Native · TypeScript · OpenAI · Firebase</div>
     </div>
   </section>
@@ -520,7 +573,7 @@
   <section id="about">
     <div class="sec-label">Beyond the editor</div>
     <div class="prose">
-      <p>I use AI heavily in my workflow — agentic coding tools, LLM integrations, automating the boring parts — and I think it's changed how frontend work gets done. Off the clock: running, the gym, golf, and an unreasonable amount of card games.</p>
+      <p>I use AI heavily in my workflow — agentic coding tools, LLM integrations, automating the boring parts — and I think it's changed how frontend work gets done. Off the clock: lifting and golf.</p>
     </div>
   </section>
 
@@ -540,7 +593,7 @@
 <script>
   document.querySelectorAll('.role-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
-      const role = btn.closest('.role');
+      const role = btn.closest('.role, .proj');
       const open = role.getAttribute('data-open') === 'true';
       role.setAttribute('data-open', String(!open));
       btn.setAttribute('aria-expanded', String(!open));
