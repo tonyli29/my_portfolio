@@ -78,6 +78,7 @@
     font-style: normal;
     color: var(--accent);
   }
+  .intro a { text-decoration: none; }
   .intro-sub {
     margin-top: 22px;
     color: var(--muted);
@@ -164,6 +165,8 @@
     flex-shrink: 0;
   }
   .role-logo img { width: 18px; height: 18px; object-fit: contain; }
+  .role-logo.full { background: none; }
+  .role-logo.full img { width: 100%; height: 100%; object-fit: cover; }
   .role-logo.mono-mark {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
@@ -374,14 +377,15 @@
       </nav>
     </div>
     <p class="intro rise d2">
-      I'm a software engineer at <em>Coinbase</em>, transforming the future
+      I'm a software engineer at <a href="https://www.linkedin.com/company/coinbase/posts/?feedView=all" target="_blank" rel="noopener"><em>Coinbase</em></a>, transforming the future
       of finance through stablecoins.
     </p>
     <p class="intro-sub rise d3">
       Right now I'm building the platform that enables enterprises and businesses to
       issue their own custom stablecoins. I've shipped rewards products used by hundreds
-      of thousands of people, and I like owning things end to end — design docs through
-      rollout. Lately I've been deep in AI-assisted development.
+      of thousands of people, and I care as much about how a system is designed as what
+      it ships — architecting things that hold up as products and teams scale. Lately
+      I've been deep in AI-assisted development.
     </p>
     <a class="resume-btn rise d3" href="Jake_s_Resume.pdf" download="Tony_Li_Resume.pdf">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
@@ -396,7 +400,7 @@
       <div class="role" data-open="true">
         <button class="role-toggle" aria-expanded="true" aria-controls="detail-coinbase">
           <span class="role-id">
-            <span class="role-logo"><img src="logos/coinbase.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='C';"></span>
+            <span class="role-logo full"><img src="logos/coinbase.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='C';"></span>
             <span class="role-co">Coinbase</span>
             <span class="role-title"> · Software Engineer, Stablecoins</span>
           </span>
@@ -428,7 +432,7 @@
       <div class="role" data-open="false">
         <button class="role-toggle" aria-expanded="false" aria-controls="detail-fortinet">
           <span class="role-id">
-            <span class="role-logo"><img src="logos/fortinet.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='F';"></span>
+            <span class="role-logo full"><img src="logos/fortinet.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='F';"></span>
             <span class="role-co">Fortinet</span>
             <span class="role-title"> · Software Developer</span>
           </span>
@@ -477,7 +481,7 @@
       <div class="role" data-open="false">
         <button class="role-toggle" aria-expanded="false" aria-controls="detail-rbc">
           <span class="role-id">
-            <span class="role-logo"><img src="logos/rbc.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='R';"></span>
+            <span class="role-logo full"><img src="logos/rbc.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('mono-mark');this.parentElement.textContent='R';"></span>
             <span class="role-co">Royal Bank of Canada</span>
             <span class="role-title"> · Software Engineer</span>
           </span>
@@ -582,7 +586,6 @@
     <div class="footer-links">
       <a href="mailto:litony1999c@gmail.com">Email</a>
       <a href="https://www.linkedin.com/in/tony-li-2b9745165/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://litony.dev/" target="_blank" rel="noopener">litony.dev</a>
       <a href="Jake_s_Resume.pdf" download="Tony_Li_Resume.pdf">Resume ↓</a>
     </div>
     <div class="copyright">© 2026 Tony Li</div>
